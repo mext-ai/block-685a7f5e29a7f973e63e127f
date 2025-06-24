@@ -90,26 +90,23 @@ const WorldMap: React.FC<WorldMapProps> = ({
         border: '4px solid #1565C0',
         borderRadius: '20px',
         overflow: 'hidden',
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 500' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1000' height='500' fill='%234A90E2'/%3E%3Cg fill='%23228B22' stroke='%23006400' stroke-width='0.5'%3E%3Cpath d='M80 150 C120 130 180 135 240 140 L300 145 C360 150 400 160 420 180 L440 200 C450 220 440 240 420 250 L380 260 C340 270 300 265 260 260 L220 255 C180 250 140 245 100 240 L80 235 C60 230 50 210 60 190 C70 170 80 150 80 150 Z'/%3E%3Cpath d='M250 260 C280 255 310 260 340 270 L370 280 C390 290 400 310 405 330 L410 350 C415 370 410 390 400 410 L390 430 C380 450 365 465 345 470 L325 475 C305 480 285 475 270 470 L255 465 C240 460 230 450 225 435 L220 420 C215 405 220 390 225 375 L230 360 C235 345 240 330 245 315 C250 300 250 280 250 260 Z'/%3E%3Cpath d='M420 140 C450 135 480 140 510 145 L540 150 C570 155 590 165 600 180 L610 195 C620 210 615 225 605 235 L590 245 C575 255 560 250 545 245 L530 240 C515 235 500 230 485 225 L470 220 C455 215 445 205 440 190 L435 175 C430 160 435 145 445 135 C455 130 420 140 420 140 Z'/%3E%3Cpath d='M590 160 C630 155 670 160 710 165 L750 170 C790 175 820 185 840 200 L860 215 C880 230 875 245 865 255 L850 265 C835 275 820 270 805 265 L790 260 C775 255 760 250 745 245 L730 240 C715 235 700 230 685 225 L670 220 C655 215 645 205 640 190 L635 175 C630 165 635 155 645 150 C655 145 590 160 590 160 Z'/%3E%3Cpath d='M470 220 C500 215 530 220 560 225 L590 230 C620 235 640 245 650 260 L660 275 C670 290 665 305 655 315 L640 325 C625 335 610 330 595 325 L580 320 C565 315 550 310 535 305 L520 300 C505 295 495 285 490 270 L485 255 C480 240 485 225 495 215 C505 210 470 220 470 220 Z'/%3E%3Cpath d='M350 50 C380 45 410 50 440 55 L470 60 C500 65 520 75 530 90 L540 105 C550 120 545 135 535 145 L520 155 C505 165 490 160 475 155 L460 150 C445 145 430 140 415 135 L400 130 C385 125 375 115 370 100 L365 85 C360 70 365 55 375 45 C385 40 350 50 350 50 Z'/%3E%3C/g%3E%3C/svg%3E")`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+        backgroundColor: '#4A90E2',
         boxShadow: '0 12px 40px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.2)'
       }}
     >
-      {/* Overlay avec image de carte du monde réelle */}
+      {/* Vraie carte du monde (dézoomée pour voir tous les continents) */}
       <div
         style={{
           position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
+          top: '-10%',
+          left: '-5%',
+          width: '110%',
+          height: '120%',
           backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Equirectangular_projection_SW.jpg/1024px-Equirectangular_projection_SW.jpg")`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          opacity: 0.8,
+          opacity: 0.85,
           zIndex: 0
         }}
       />
@@ -267,7 +264,7 @@ const WorldMap: React.FC<WorldMapProps> = ({
         boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
         zIndex: 50
       }}>
-        Carte du Monde
+        Planisphère Mondial
       </div>
     </div>
   );
