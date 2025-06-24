@@ -94,17 +94,17 @@ const WorldMap: React.FC<WorldMapProps> = ({
         boxShadow: '0 12px 40px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.2)'
       }}
     >
-      {/* Vraie carte du monde (zoom Y + dézoomer X pour un meilleur cadrage) */}
+      {/* Vraie carte du monde (couper l'Antarctique, mieux montrer l'Australie) */}
       <div
         style={{
           position: 'absolute',
-          top: '-10%',        // Zoom vertical (moins de marge en haut/bas)
-          left: '-25%',       // Dézoomer horizontal (plus de marge gauche/droite)
-          width: '150%',      // Plus large horizontalement
-          height: '120%',     // Moins haut verticalement pour zoomer
+          top: '-25%',       // Décaler vers le haut pour couper l'Antarctique
+          left: '-25%',      // Dézoomer horizontal
+          width: '150%',     // Plus large horizontalement
+          height: '150%',    // Plus haut pour voir l'Australie complète
           backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Equirectangular_projection_SW.jpg/1024px-Equirectangular_projection_SW.jpg")`,
           backgroundSize: 'contain',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center top',  // Centrer mais privilégier le haut
           backgroundRepeat: 'no-repeat',
           opacity: 0.9,
           zIndex: 0
