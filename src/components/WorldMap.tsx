@@ -78,121 +78,6 @@ const WorldMap: React.FC<WorldMapProps> = ({
     };
   };
 
-  // Carte du monde réaliste avec contours géographiques précis
-  const WorldMapSVG = () => (
-    <svg 
-      viewBox="0 0 1000 500" 
-      style={{ 
-        width: '100%', 
-        height: '100%', 
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        zIndex: 0
-      }}
-    >
-      <defs>
-        <radialGradient id="oceanGradient" cx="50%" cy="30%" r="70%">
-          <stop offset="0%" stopColor="#4A90E2" />
-          <stop offset="50%" stopColor="#357ABD" />
-          <stop offset="100%" stopColor="#1E3A8A" />
-        </radialGradient>
-        <linearGradient id="landGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#8FBC8F" />
-          <stop offset="50%" stopColor="#6B8E23" />
-          <stop offset="100%" stopColor="#556B2F" />
-        </linearGradient>
-      </defs>
-      
-      {/* Océan */}
-      <rect width="1000" height="500" fill="url(#oceanGradient)" />
-      
-      {/* Continents avec contours géographiques réalistes */}
-      <g fill="url(#landGradient)" stroke="#2F4F2F" strokeWidth="0.5">
-        
-        {/* AMÉRIQUE DU NORD */}
-        {/* Canada */}
-        <path d="M50 120 C80 100 120 105 160 110 L200 115 C240 110 280 115 320 125 L350 135 C380 145 390 155 395 170 L400 185 C405 200 400 210 390 215 L370 220 C350 225 320 220 300 215 L270 210 C240 205 210 200 180 195 L150 190 C120 185 90 180 70 175 L50 170 C40 165 35 155 40 145 C45 135 50 120 50 120 Z" />
-        
-        {/* Alaska */}
-        <path d="M15 140 C25 130 35 135 40 145 L45 155 C40 165 30 170 20 165 L15 155 C10 150 10 145 15 140 Z" />
-        
-        {/* États-Unis */}
-        <path d="M70 175 C100 170 130 175 160 180 L190 185 C220 190 250 195 280 200 L310 205 C340 210 360 215 365 225 L370 235 C365 245 350 250 330 245 L310 240 C280 235 250 230 220 225 L190 220 C160 215 130 210 100 205 L80 200 C60 195 50 185 55 175 C60 170 70 175 70 175 Z" />
-        
-        {/* Mexique et Amérique Centrale */}
-        <path d="M180 245 C200 240 220 245 240 250 L260 255 C270 260 275 270 270 280 L265 290 C260 300 250 305 240 300 L220 295 C200 290 185 285 175 275 L170 265 C165 255 170 250 180 245 Z" />
-        
-        {/* AMÉRIQUE DU SUD */}
-        <path d="M210 300 C230 295 250 300 270 310 L290 320 C300 330 305 350 310 370 L315 390 C320 410 315 430 310 450 L305 470 C300 485 290 495 275 500 L255 495 C235 490 220 485 210 470 L200 450 C195 430 200 410 205 390 L210 370 C205 350 205 330 210 300 Z" />
-        
-        {/* EUROPE */}
-        {/* Scandinavie */}
-        <path d="M480 80 C500 70 520 75 530 85 L540 95 C545 105 540 115 535 125 L530 135 C525 145 520 150 510 145 L500 140 C490 135 485 125 480 115 L475 105 C470 95 475 85 480 80 Z" />
-        
-        {/* Royaume-Uni et Irlande */}
-        <path d="M420 130 C430 125 440 130 445 140 L450 150 C445 160 435 165 425 160 L420 150 C415 145 415 135 420 130 Z" />
-        <path d="M405 135 C415 130 420 135 422 145 L425 155 C420 165 410 170 405 165 L400 155 C395 150 395 140 405 135 Z" />
-        
-        {/* Europe continentale */}
-        <path d="M440 140 C470 135 500 140 530 145 L560 150 C580 155 590 165 595 175 L600 185 C605 195 600 205 590 210 L570 215 C550 220 530 215 510 210 L490 205 C470 200 450 195 445 185 L440 175 C435 165 435 155 440 140 Z" />
-        
-        {/* ASIE */}
-        {/* Russie */}
-        <path d="M600 80 C650 70 700 75 750 80 L800 85 C850 90 900 95 920 105 L940 115 C950 125 945 135 940 145 L935 155 C930 165 920 170 900 165 L850 160 C800 155 750 150 700 145 L650 140 C620 135 605 125 610 115 L615 105 C590 95 595 85 600 80 Z" />
-        
-        {/* Asie centrale */}
-        <path d="M620 160 C650 155 680 160 710 165 L740 170 C760 175 770 185 775 195 L780 205 C785 215 780 225 770 230 L750 235 C730 240 710 235 690 230 L670 225 C650 220 635 210 630 200 L625 190 C620 180 620 170 620 160 Z" />
-        
-        {/* Chine */}
-        <path d="M720 180 C750 175 780 180 810 185 L830 190 C850 195 860 205 865 215 L870 225 C875 235 870 245 860 250 L840 255 C820 260 800 255 780 250 L760 245 C740 240 725 230 720 220 L715 210 C710 200 710 190 720 180 Z" />
-        
-        {/* Inde */}
-        <path d="M650 240 C670 235 690 240 700 250 L710 260 C715 270 720 285 715 300 L710 315 C705 330 695 340 685 335 L675 330 C665 325 655 315 650 305 L645 295 C640 285 640 275 640 265 C640 255 645 245 650 240 Z" />
-        
-        {/* Asie du Sud-Est */}
-        <path d="M720 280 C740 275 760 280 780 285 L800 290 C815 295 825 305 830 315 L835 325 C840 335 835 345 825 350 L810 355 C795 360 780 355 765 350 L750 345 C735 340 725 330 720 320 L715 310 C710 300 710 290 720 280 Z" />
-        
-        {/* Indonésie et îles */}
-        <path d="M750 350 C770 345 790 350 810 355 L830 360 C845 365 855 375 860 385 L865 395 C870 405 865 415 855 420 L840 425 C825 430 810 425 795 420 L780 415 C765 410 755 400 750 390 L745 380 C740 370 740 360 750 350 Z" />
-        
-        {/* Japon */}
-        <path d="M860 200 C870 195 880 200 885 210 L890 220 C895 230 890 240 880 245 L870 250 C860 255 850 250 845 240 L840 230 C835 220 840 210 850 205 C855 200 860 200 860 200 Z" />
-        
-        {/* AFRIQUE */}
-        <path d="M450 220 C480 215 510 220 540 225 L570 230 C590 235 600 245 605 260 L610 275 C615 290 620 310 615 330 L610 350 C605 370 600 390 595 410 L590 430 C585 450 575 470 560 480 L540 485 C520 490 500 485 480 480 L460 475 C440 470 425 460 420 445 L415 430 C410 415 415 400 420 385 L425 370 C430 355 435 340 440 325 L445 310 C450 295 455 280 460 265 L465 250 C470 235 480 225 490 220 C470 215 450 220 450 220 Z" />
-        
-        {/* Madagascar */}
-        <path d="M590 380 C600 375 605 385 610 395 L615 405 C620 415 615 425 605 430 L595 435 C585 440 575 435 570 425 L565 415 C560 405 565 395 575 390 C580 385 590 380 590 380 Z" />
-        
-        {/* OCÉANIE */}
-        {/* Australie */}
-        <path d="M720 380 C760 375 800 380 840 385 L880 390 C910 395 930 405 940 420 L945 435 C950 450 945 460 930 465 L900 470 C870 475 840 470 810 465 L780 460 C750 455 730 445 725 430 L720 415 C715 400 715 390 720 380 Z" />
-        
-        {/* Nouvelle-Zélande */}
-        <path d="M880 440 C890 435 900 440 905 450 L910 460 C915 470 910 480 900 485 L890 490 C880 495 870 490 865 480 L860 470 C855 460 860 450 870 445 C875 440 880 440 880 440 Z" />
-        <path d="M885 495 C895 490 905 495 910 505 L915 515 C920 525 915 535 905 540 L895 545 C885 550 875 545 870 535 L865 525 C860 515 865 505 875 500 C880 495 885 495 885 495 Z" />
-        
-        {/* Groenland */}
-        <path d="M360 50 C380 45 400 50 420 55 L440 60 C455 65 465 75 470 85 L475 95 C480 105 475 115 465 120 L450 125 C435 130 420 125 405 120 L390 115 C375 110 365 100 360 90 L355 80 C350 70 350 60 360 50 Z" />
-        
-        {/* Islande */}
-        <path d="M380 110 C390 105 400 110 405 120 L410 130 C415 140 410 150 400 155 L390 160 C380 165 370 160 365 150 L360 140 C355 130 360 120 370 115 C375 110 380 110 380 110 Z" />
-        
-      </g>
-      
-      {/* Lignes de latitude importantes */}
-      <g stroke="#87CEEB" strokeWidth="1" strokeDasharray="3,3" opacity="0.5">
-        {/* Équateur */}
-        <line x1="0" y1="250" x2="1000" y2="250" />
-        {/* Tropique du Cancer */}
-        <line x1="0" y1="185" x2="1000" y2="185" />
-        {/* Tropique du Capricorne */}
-        <line x1="0" y1="315" x2="1000" y2="315" />
-      </g>
-    </svg>
-  );
-
   return (
     <div 
       ref={mapRef}
@@ -205,12 +90,42 @@ const WorldMap: React.FC<WorldMapProps> = ({
         border: '4px solid #1565C0',
         borderRadius: '20px',
         overflow: 'hidden',
-        background: 'linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 50%, #90CAF9 100%)',
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 1000 500' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='1000' height='500' fill='%234A90E2'/%3E%3Cg fill='%23228B22' stroke='%23006400' stroke-width='0.5'%3E%3Cpath d='M80 150 C120 130 180 135 240 140 L300 145 C360 150 400 160 420 180 L440 200 C450 220 440 240 420 250 L380 260 C340 270 300 265 260 260 L220 255 C180 250 140 245 100 240 L80 235 C60 230 50 210 60 190 C70 170 80 150 80 150 Z'/%3E%3Cpath d='M250 260 C280 255 310 260 340 270 L370 280 C390 290 400 310 405 330 L410 350 C415 370 410 390 400 410 L390 430 C380 450 365 465 345 470 L325 475 C305 480 285 475 270 470 L255 465 C240 460 230 450 225 435 L220 420 C215 405 220 390 225 375 L230 360 C235 345 240 330 245 315 C250 300 250 280 250 260 Z'/%3E%3Cpath d='M420 140 C450 135 480 140 510 145 L540 150 C570 155 590 165 600 180 L610 195 C620 210 615 225 605 235 L590 245 C575 255 560 250 545 245 L530 240 C515 235 500 230 485 225 L470 220 C455 215 445 205 440 190 L435 175 C430 160 435 145 445 135 C455 130 420 140 420 140 Z'/%3E%3Cpath d='M590 160 C630 155 670 160 710 165 L750 170 C790 175 820 185 840 200 L860 215 C880 230 875 245 865 255 L850 265 C835 275 820 270 805 265 L790 260 C775 255 760 250 745 245 L730 240 C715 235 700 230 685 225 L670 220 C655 215 645 205 640 190 L635 175 C630 165 635 155 645 150 C655 145 590 160 590 160 Z'/%3E%3Cpath d='M470 220 C500 215 530 220 560 225 L590 230 C620 235 640 245 650 260 L660 275 C670 290 665 305 655 315 L640 325 C625 335 610 330 595 325 L580 320 C565 315 550 310 535 305 L520 300 C505 295 495 285 490 270 L485 255 C480 240 485 225 495 215 C505 210 470 220 470 220 Z'/%3E%3Cpath d='M350 50 C380 45 410 50 440 55 L470 60 C500 65 520 75 530 90 L540 105 C550 120 545 135 535 145 L520 155 C505 165 490 160 475 155 L460 150 C445 145 430 140 415 135 L400 130 C385 125 375 115 370 100 L365 85 C360 70 365 55 375 45 C385 40 350 50 350 50 Z'/%3E%3C/g%3E%3C/svg%3E")`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
         boxShadow: '0 12px 40px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.2)'
       }}
     >
-      {/* Carte du monde en arrière-plan */}
-      <WorldMapSVG />
+      {/* Overlay avec image de carte du monde réelle */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Equirectangular_projection_SW.jpg/1024px-Equirectangular_projection_SW.jpg")`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.8,
+          zIndex: 0
+        }}
+      />
+      
+      {/* Overlay pour améliorer le contraste */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'linear-gradient(135deg, rgba(70, 144, 226, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%)',
+          zIndex: 1
+        }}
+      />
       
       {/* Points des pays */}
       {countries.map((country) => (
@@ -270,7 +185,8 @@ const WorldMap: React.FC<WorldMapProps> = ({
         fontSize: '12px',
         boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
         backdropFilter: 'blur(10px)',
-        border: '1px solid rgba(255,255,255,0.3)'
+        border: '1px solid rgba(255,255,255,0.3)',
+        zIndex: 50
       }}>
         <div style={{ 
           fontWeight: 'bold', 
@@ -332,12 +248,13 @@ const WorldMap: React.FC<WorldMapProps> = ({
         justifyContent: 'center',
         fontSize: '24px',
         boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-        border: '2px solid rgba(255,255,255,0.5)'
+        border: '2px solid rgba(255,255,255,0.5)',
+        zIndex: 50
       }}>
         🧭
       </div>
       
-      {/* Grille de coordonnées subtile */}
+      {/* Indicateur de carte */}
       <div style={{
         position: 'absolute',
         top: '15px',
@@ -347,9 +264,10 @@ const WorldMap: React.FC<WorldMapProps> = ({
         borderRadius: '8px',
         fontSize: '11px',
         color: '#666',
-        boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
+        boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+        zIndex: 50
       }}>
-        Projection: Équirectangulaire
+        Carte du Monde
       </div>
     </div>
   );
