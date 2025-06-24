@@ -94,14 +94,14 @@ const WorldMap: React.FC<WorldMapProps> = ({
         boxShadow: '0 12px 40px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.2)'
       }}
     >
-      {/* Vraie carte du monde (bien dézoomée pour montrer tous les continents) */}
+      {/* Vraie carte du monde (zoom Y + dézoomer X pour un meilleur cadrage) */}
       <div
         style={{
           position: 'absolute',
-          top: '-20%',
-          left: '-15%',
-          width: '130%',
-          height: '140%',
+          top: '-10%',        // Zoom vertical (moins de marge en haut/bas)
+          left: '-25%',       // Dézoomer horizontal (plus de marge gauche/droite)
+          width: '150%',      // Plus large horizontalement
+          height: '120%',     // Moins haut verticalement pour zoomer
           backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Equirectangular_projection_SW.jpg/1024px-Equirectangular_projection_SW.jpg")`,
           backgroundSize: 'contain',
           backgroundPosition: 'center',
