@@ -94,19 +94,19 @@ const WorldMap: React.FC<WorldMapProps> = ({
         boxShadow: '0 12px 40px rgba(0,0,0,0.3), inset 0 2px 4px rgba(255,255,255,0.2)'
       }}
     >
-      {/* Vraie carte du monde (dézoomée pour voir tous les continents) */}
+      {/* Vraie carte du monde (bien dézoomée pour montrer tous les continents) */}
       <div
         style={{
           position: 'absolute',
-          top: '-10%',
-          left: '-5%',
-          width: '110%',
-          height: '120%',
+          top: '-20%',
+          left: '-15%',
+          width: '130%',
+          height: '140%',
           backgroundImage: `url("https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Equirectangular_projection_SW.jpg/1024px-Equirectangular_projection_SW.jpg")`,
-          backgroundSize: 'cover',
+          backgroundSize: 'contain',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
-          opacity: 0.85,
+          opacity: 0.9,
           zIndex: 0
         }}
       />
@@ -119,7 +119,7 @@ const WorldMap: React.FC<WorldMapProps> = ({
           left: 0,
           width: '100%',
           height: '100%',
-          background: 'linear-gradient(135deg, rgba(70, 144, 226, 0.1) 0%, rgba(30, 58, 138, 0.1) 100%)',
+          background: 'linear-gradient(135deg, rgba(70, 144, 226, 0.08) 0%, rgba(30, 58, 138, 0.08) 100%)',
           zIndex: 1
         }}
       />
@@ -264,7 +264,7 @@ const WorldMap: React.FC<WorldMapProps> = ({
         boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
         zIndex: 50
       }}>
-        Planisphère Mondial
+        🗺️ Planisphère Mondial
       </div>
     </div>
   );
