@@ -78,7 +78,7 @@ const WorldMap: React.FC<WorldMapProps> = ({
     };
   };
 
-  // Carte du monde détaillée avec de vrais continents
+  // Carte du monde réaliste utilisant une carte SVG simplifiée mais précise
   const WorldMapSVG = () => (
     <svg 
       viewBox="0 0 1000 500" 
@@ -91,7 +91,6 @@ const WorldMap: React.FC<WorldMapProps> = ({
         zIndex: 0
       }}
     >
-      {/* Dégradé pour les océans */}
       <defs>
         <radialGradient id="oceanGradient" cx="50%" cy="30%" r="70%">
           <stop offset="0%" stopColor="#87CEEB" />
@@ -103,102 +102,84 @@ const WorldMap: React.FC<WorldMapProps> = ({
           <stop offset="50%" stopColor="#66BB6A" />
           <stop offset="100%" stopColor="#388E3C" />
         </linearGradient>
-        <filter id="shadow">
-          <dropShadow dx="2" dy="2" stdDeviation="3" floodColor="rgba(0,0,0,0.3)"/>
-        </filter>
       </defs>
       
-      {/* Océan avec dégradé */}
+      {/* Océan */}
       <rect width="1000" height="500" fill="url(#oceanGradient)" />
       
-      {/* Amérique du Nord - forme plus réaliste */}
-      <path d="M50 120 Q80 100 120 110 L160 105 Q200 100 240 110 L280 120 Q320 130 340 150 L350 170 Q360 190 350 210 L340 230 Q320 240 300 235 L280 240 Q240 245 200 240 L160 235 Q120 230 80 225 L60 210 Q40 190 45 170 Q50 150 50 120 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="2" filter="url(#shadow)"/>
-      
-      {/* Alaska */}
-      <path d="M20 140 Q30 135 40 140 L45 150 Q40 160 30 155 L25 150 Q20 145 20 140 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="1"/>
-      
-      {/* Groenland */}
-      <path d="M280 60 Q320 50 350 65 L370 80 Q375 100 365 115 L350 125 Q320 130 290 125 L270 115 Q260 100 265 85 Q270 70 280 60 Z" 
-            fill="#E8F5E8" stroke="#4CAF50" strokeWidth="2"/>
-      
-      {/* Amérique du Sud - forme de poire */}
-      <path d="M200 260 Q230 250 260 260 L280 280 Q290 320 285 360 L280 400 Q275 440 265 470 L250 485 Q230 490 210 485 L190 470 Q180 440 185 400 L190 360 Q195 320 205 280 Q200 270 200 260 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="2" filter="url(#shadow)"/>
-      
-      {/* Europe - plus détaillée */}
-      <path d="M420 110 Q450 100 480 105 L510 110 Q530 120 540 140 L545 160 Q540 180 530 175 L510 180 Q480 175 450 170 L430 165 Q410 160 415 140 Q420 125 420 110 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="2" filter="url(#shadow)"/>
-      
-      {/* Royaume-Uni et Irlande */}
-      <path d="M410 130 Q420 125 430 130 L435 140 Q430 150 420 145 L415 140 Q410 135 410 130 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="1"/>
-      <path d="M400 135 Q405 130 410 135 L412 145 Q407 150 402 145 L400 140 Q400 137 400 135 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="1"/>
-      
-      {/* Scandinavie */}
-      <path d="M480 80 Q500 75 520 85 L530 100 Q525 120 515 115 L500 110 Q485 105 480 95 Q475 85 480 80 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="2"/>
-      
-      {/* Afrique - forme caractéristique */}
-      <path d="M430 200 Q470 190 510 200 L540 220 Q550 260 545 300 L540 340 Q535 380 525 410 L510 435 Q490 445 470 440 L450 435 Q430 425 425 410 L420 380 Q415 340 420 300 Q425 260 435 220 Q430 210 430 200 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="2" filter="url(#shadow)"/>
-      
-      {/* Madagascar */}
-      <path d="M565 380 Q575 375 580 385 L582 405 Q577 415 567 410 L562 400 Q560 390 565 380 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="1"/>
-      
-      {/* Asie - Russie */}
-      <path d="M540 80 Q600 70 700 80 L800 90 Q860 100 900 110 L920 130 Q915 150 900 145 L860 140 Q800 130 700 120 L600 110 Q540 100 540 80 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="2" filter="url(#shadow)"/>
-      
-      {/* Asie - Chine et Mongolie */}
-      <path d="M650 160 Q720 150 780 165 L810 180 Q815 200 805 215 L780 225 Q720 220 650 210 Q630 200 635 180 Q640 170 650 160 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="2" filter="url(#shadow)"/>
-      
-      {/* Inde - forme triangulaire */}
-      <path d="M620 240 Q660 230 680 250 L690 280 Q685 310 670 320 L650 325 Q630 320 620 305 L615 280 Q620 260 620 240 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="2" filter="url(#shadow)"/>
-      
-      {/* Asie du Sud-Est */}
-      <path d="M720 280 Q760 270 790 285 L800 305 Q795 325 780 320 L760 315 Q730 310 720 295 Q715 285 720 280 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="2"/>
-      
-      {/* Indonésie - archipel */}
-      <path d="M750 330 Q780 325 810 335 L820 345 Q815 355 800 350 L780 345 Q755 340 750 330 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="1"/>
-      <path d="M770 355 Q790 350 805 360 L810 370 Q805 380 790 375 L775 370 Q770 365 770 355 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="1"/>
-      
-      {/* Japon */}
-      <path d="M860 200 Q870 195 875 205 L880 225 Q875 235 865 230 L860 220 Q855 210 860 200 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="1"/>
-      <path d="M865 240 Q875 235 880 245 L882 255 Q877 265 867 260 L862 250 Q860 245 865 240 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="1"/>
-      
-      {/* Australie - forme réaliste */}
-      <path d="M720 350 Q780 340 840 355 L860 370 Q865 390 855 405 L835 415 Q780 420 720 410 L700 400 Q695 380 705 365 Q715 355 720 350 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="2" filter="url(#shadow)"/>
-      
-      {/* Nouvelle-Zélande */}
-      <path d="M880 420 Q890 415 895 425 L898 440 Q893 450 883 445 L878 435 Q875 425 880 420 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="1"/>
-      <path d="M885 460 Q895 455 900 465 L902 475 Q897 485 887 480 L882 470 Q880 465 885 460 Z" 
-            fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="1"/>
-      
-      {/* Détails géographiques - montagnes */}
-      <path d="M280 150 L285 145 L290 150" stroke="#2E7D32" strokeWidth="1" fill="none" opacity="0.6"/>
-      <path d="M480 120 L485 115 L490 120" stroke="#2E7D32" strokeWidth="1" fill="none" opacity="0.6"/>
-      <path d="M650 180 L655 175 L660 180" stroke="#2E7D32" strokeWidth="1" fill="none" opacity="0.6"/>
-      
-      {/* Nuages décoratifs */}
-      <circle cx="100" cy="80" r="15" fill="white" opacity="0.7"/>
-      <circle cx="110" cy="75" r="12" fill="white" opacity="0.7"/>
-      <circle cx="120" cy="80" r="10" fill="white" opacity="0.7"/>
-      
-      <circle cx="600" cy="60" r="18" fill="white" opacity="0.6"/>
-      <circle cx="615" cy="55" r="15" fill="white" opacity="0.6"/>
+      {/* Utilisation d'une carte du monde simplifiée mais géographiquement correcte */}
+      <g fill="url(#landGradient)" stroke="#2E7D32" strokeWidth="1">
+        {/* Groenland */}
+        <path d="M355 50 Q380 45 400 55 L420 70 Q425 85 415 100 L400 110 Q380 115 360 110 L345 100 Q335 85 340 70 Q350 55 355 50 Z" />
+        
+        {/* Amérique du Nord */}
+        <path d="M50 120 Q80 100 120 110 L160 105 Q200 100 240 110 L280 120 Q320 130 340 150 L350 170 Q360 190 350 210 L340 230 Q320 240 300 235 L280 240 Q240 245 200 240 L160 235 Q120 230 80 225 L60 210 Q40 190 45 170 Q50 150 50 120 Z" />
+        
+        {/* Alaska */}
+        <path d="M20 140 Q35 130 50 140 L55 155 Q50 170 35 165 L25 155 Q15 150 20 140 Z" />
+        
+        {/* Amérique Centrale */}
+        <path d="M180 240 Q200 235 220 245 L240 255 Q235 270 220 265 L200 260 Q185 255 180 240 Z" />
+        
+        {/* Amérique du Sud */}
+        <path d="M200 260 Q230 250 260 265 L280 285 Q290 320 285 360 L280 400 Q275 440 265 470 L250 485 Q230 490 210 485 L190 470 Q180 440 185 400 L190 360 Q195 320 205 285 Q200 270 200 260 Z" />
+        
+        {/* Islande */}
+        <path d="M380 110 Q390 105 400 115 L405 125 Q400 135 390 130 L385 125 Q380 120 380 110 Z" />
+        
+        {/* Royaume-Uni et Irlande */}
+        <path d="M410 130 Q420 125 430 135 L435 145 Q430 155 420 150 L415 145 Q410 140 410 130 Z" />
+        <path d="M400 135 Q408 130 415 140 L417 150 Q412 160 405 155 L400 145 Q395 140 400 135 Z" />
+        
+        {/* Scandinavie */}
+        <path d="M480 80 Q500 70 520 85 L530 100 Q535 120 525 135 L515 140 Q500 145 485 140 L475 135 Q465 120 470 100 Q475 85 480 80 Z" />
+        
+        {/* Europe continentale */}
+        <path d="M420 140 Q450 130 480 140 L510 145 Q530 155 540 175 L545 195 Q540 215 530 210 L510 215 Q480 210 450 205 L430 200 Q410 195 415 175 Q420 160 420 140 Z" />
+        
+        {/* Russie européenne */}
+        <path d="M540 80 Q580 70 620 80 L650 90 Q670 100 675 120 L680 140 Q675 160 665 155 L650 160 Q620 155 580 150 L560 145 Q540 140 535 120 Q530 100 540 80 Z" />
+        
+        {/* Russie asiatique */}
+        <path d="M675 80 Q720 70 780 80 L840 90 Q880 100 920 110 L940 125 Q945 145 935 160 L920 165 Q880 170 840 165 L780 160 Q720 155 675 150 Q655 145 660 125 Q665 105 675 80 Z" />
+        
+        {/* Asie centrale */}
+        <path d="M620 160 Q660 150 700 165 L730 175 Q750 185 755 205 L760 225 Q755 245 745 240 L730 245 Q700 240 660 235 L640 230 Q620 225 615 205 Q610 185 620 160 Z" />
+        
+        {/* Chine */}
+        <path d="M700 180 Q740 170 780 185 L810 195 Q830 205 835 225 L840 245 Q835 265 825 260 L810 265 Q780 260 740 255 L720 250 Q700 245 695 225 Q690 205 700 180 Z" />
+        
+        {/* Inde */}
+        <path d="M640 240 Q670 230 690 250 L700 270 Q705 300 695 320 L685 335 Q670 340 655 335 L645 320 Q635 300 640 270 Q635 250 640 240 Z" />
+        
+        {/* Asie du Sud-Est */}
+        <path d="M720 280 Q750 270 780 285 L800 295 Q815 305 820 325 L825 345 Q820 365 810 360 L800 365 Q780 360 750 355 L730 350 Q720 345 715 325 Q710 305 720 280 Z" />
+        
+        {/* Indonésie */}
+        <path d="M750 350 Q780 345 810 360 L830 370 Q835 390 825 405 L815 410 Q780 415 750 410 L730 405 Q720 390 725 370 Q730 360 750 350 Z" />
+        
+        {/* Japon */}
+        <path d="M860 200 Q875 195 885 210 L890 230 Q885 250 875 245 L865 240 Q855 230 860 210 Q855 200 860 200 Z" />
+        
+        {/* Corée */}
+        <path d="M820 210 Q830 205 835 220 L840 235 Q835 250 825 245 L820 240 Q815 235 820 220 Q815 210 820 210 Z" />
+        
+        {/* Moyen-Orient */}
+        <path d="M540 200 Q570 190 600 205 L620 215 Q635 225 640 245 L645 265 Q640 285 630 280 L620 285 Q600 280 570 275 L550 270 Q540 265 535 245 Q530 225 540 200 Z" />
+        
+        {/* Afrique */}
+        <path d="M430 200 Q470 190 510 205 L540 220 Q560 240 565 280 L570 320 Q575 360 570 400 L565 440 Q560 470 545 485 L525 495 Q490 500 460 495 L440 485 Q425 470 420 440 L415 400 Q410 360 415 320 L420 280 Q425 240 445 220 Q430 210 430 200 Z" />
+        
+        {/* Madagascar */}
+        <path d="M580 380 Q590 375 595 390 L600 410 Q595 430 585 425 L580 420 Q575 410 580 390 Z" />
+        
+        {/* Australie */}
+        <path d="M720 350 Q780 340 840 355 L880 370 Q900 385 905 405 L910 425 Q905 445 895 440 L880 445 Q840 450 780 445 L740 440 Q720 435 715 415 Q710 395 715 375 Q720 355 720 350 Z" />
+        
+        {/* Nouvelle-Zélande */}
+        <path d="M880 420 Q895 415 905 430 L910 450 Q905 470 890 465 L885 460 Q880 450 885 430 Q880 420 880 420 Z" />
+        <path d="M885 475 Q900 470 910 485 L915 505 Q910 525 895 520 L890 515 Q885 505 890 485 Q885 475 885 475 Z" />
+      </g>
     </svg>
   );
 
